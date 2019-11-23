@@ -1,5 +1,5 @@
 {
- "method":"moveBefore",
+ "method":"moveAfter",
  "fields":["id","lft","rgt"],
  "existing_trees":[
     {
@@ -42,7 +42,7 @@
     
  ],
  "cases":[{
-     "comment":"move a node before root in a different tree",
+     "comment":"move a node after root in a different tree",
      "params":[2,200001],
      "toTrees":[
         {
@@ -55,10 +55,10 @@
         }
      ]
      ,
-     "error":1100
+     "error":"Exception\\InsertOutsideRoot"
     },
     {
-     "comment":"move a node before a single leaf in a different tree",
+     "comment":"move a node after a single leaf in a different tree",
      "params":[2,300003],
      "toTrees":[
         {
@@ -82,12 +82,11 @@
         "tree":
             [300001,1,18,[
                 [300002,2,11,[
-                    [2,3,8,[
-                        [5,4,5,[]],
-                        [6,6,7,[]]
-                    ]],
-                    [300003,9,10,[]]
-                    
+                    [300003,3,4,[]],
+                    [2,5,10,[
+                        [5,6,7,[]],
+                        [6,8,9,[]]
+                    ]]
                 ]],
                 [300005,12,17,[
                     [300006,13,14,[]],
@@ -98,47 +97,8 @@
      ]
     },
     {
-     "comment":"move a node before leftmost child of a different tree",
+     "comment":"move a node after leftmost child of a different tree",
      "params":[3,300002],
-     "toTrees":[
-        {
-        "tree_id":1000,
-        "tree":
-            [1,1,14,[
-                [2,2,7,[
-                    [5,3,4,[]],
-                    [6,5,6,[]]
-                ]],
-                [4,8,13,
-                    [[9,9,10,[]],
-                    [10,11,12,[]]
-                ]]
-            ]]
-        },
-        {
-        "tree_id":3000,
-        "tree":
-            [300001,1,20,[
-                [3,2,9,[
-                    [7,3,6,[
-                        [11,4,5,[]]
-                    ]],
-                    [8,7,8,[]]
-                ]],
-                [300002,10,13,[
-                    [300003,11,12,[]]
-                ]],
-                [300005,14,19,[
-                    [300006,15,16,[]],
-                    [300007,17,18,[]]
-                ]]
-            ]]
-        }
-     ]
-    },
-    {
-     "comment":"move a node before rightmost child of a different tree",
-     "params":[3,300005],
      "toTrees":[
         {
         "tree_id":1000,
@@ -176,7 +136,46 @@
      ]
     },
     {
-     "comment":"move a leftmost node before leftmost node with the same lft value in a different tree",
+     "comment":"move a node after rightmost child of a different tree",
+     "params":[3,300005],
+     "toTrees":[
+        {
+        "tree_id":1000,
+        "tree":
+            [1,1,14,[
+                [2,2,7,[
+                    [5,3,4,[]],
+                    [6,5,6,[]]
+                ]],
+                [4,8,13,
+                    [[9,9,10,[]],
+                    [10,11,12,[]]
+                ]]
+            ]]
+        },
+        {
+        "tree_id":3000,
+        "tree":
+            [300001,1,20,[
+                [300002,2,5,[
+                    [300003,3,4,[]]
+                ]],
+                [300005,6,11,[
+                    [300006,7,8,[]],
+                    [300007,9,10,[]]
+                ]],
+                [3,12,19,[
+                    [7,13,16,[
+                        [11,14,15,[]]
+                    ]],
+                    [8,17,18,[]]
+                ]]
+            ]]
+        }
+     ]
+    },
+    {
+     "comment":"move a leftmost node after leftmost node with the same lft value in a different tree",
      "params":[2,300002],
      "toTrees":[
         {
@@ -199,12 +198,12 @@
         "tree_id":3000,
         "tree":
              [300001,1,18,[
-                [2,2,7,[
-                    [5,3,4,[]],
-                    [6,5,6,[]]
+                [300002,2,5,[
+                    [300003,3,4,[]]
                 ]],
-                [300002,8,11,[
-                    [300003,9,10,[]]
+                [2,6,11,[
+                    [5,7,8,[]],
+                    [6,9,10,[]]
                 ]],
                 [300005,12,17,[
                     [300006,13,14,[]],
